@@ -1,56 +1,38 @@
 
 public abstract class Persona {
+	
 	private String nombre;
-	private int edad;
-	private int dni;
-	private Character sexo;
-	public Persona() {
-		
-	}
-	public Persona(String nombre, int edad, int dni, Character sexo) {
+	private String apellido;
+	private String dni;
+	public Persona(String nombre, String apellido, String dni) {
 		super();
 		this.nombre = nombre;
-		this.edad = edad;
+		this.apellido = apellido;
 		this.dni = dni;
-		this.sexo = sexo;
 	}
-	
+	public Persona() {
+		super();
+	}
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public int getEdad() {
-		return edad;
+	public String getApellido() {
+		return apellido;
 	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
-	
-	public int getDni() {
+	public String getDNI() {
 		return dni;
 	}
-
-	public void setDni(int dni) {
+	public void setDNI(String dni) {
 		this.dni = dni;
-	}
-
-	public Character getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(Character sexo) {
-		this.sexo = sexo;
-	}
-
+	}	
 	@Override
 	public String toString() {
-		return "[nombre: " + this.nombre + ", edad: " + this.edad + ", dni: " + this.dni + ", sexo: " + this.sexo + "]";
-	}
-	
-	
+		return " [Nombre=" + nombre + ", Apellido=" + apellido + ", Dni=" + dni  ;
+	}	
 }
