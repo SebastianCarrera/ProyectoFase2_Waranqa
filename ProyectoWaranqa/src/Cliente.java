@@ -63,10 +63,36 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 	}
 	
 	public int validarTelefono() {
-		return 0;
+		if(this.getTelefono().length() > 9 || this.getTelefono().length() < 9) {
+			System.out.println("El numero ingresado de telefono es incorrecto");
+			return 0;
+		}
+		else {
+			System.out.println("El numero ingresado de telefono es correcto");
+			return 1;
+		}
 	}
 	
 	public int validarDNI() {
-		return 0;
+		int i, j = 0;
+		String numero = ""; // Es el número que se comprueba uno a uno por si hay alguna letra entre los 8 primeros dígitos
+		String miDNI = ""; // Guardamos en una cadena los números para después calcular la letra
+		String[] unoNueve = {"0","1","2","3","4","5","6","7","8","9"};
+		for(i = 0; i < this.getDNI().length() - 1; i++) {
+			numero = this.getDNI().substring(i, i+1);
+			for(j = 0; j < unoNueve.length; j++) {
+				if(numero.equals(unoNueve[j])) {
+					miDNI += unoNueve[j];
+				}
+			}
+		}
+		if(this.getDNI().length() > 8 || this.getDNI().length() < 8 ) {
+			System.out.println("EL DNI INGRESADO NO ES VALIDO");
+			return 0;
+		}
+		else {
+			System.out.println("EL DNI INGRESADO SI ES VALIDO");
+			return 1;			
+		}
 	}
 }
