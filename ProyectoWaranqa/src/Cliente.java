@@ -35,7 +35,7 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 	}
 	
 	public String toString() {
-		return "CLIENTE : "+super.toString() + " , Telefono = "+this.getTelefono()+ " , Correo ="+this.getCorreo()+"]";
+		return "CLIENTE: "+super.toString() + ", Telefono: "+this.getTelefono()+ ", Correo: "+this.getCorreo();
 	}
 
 	public void borrarCuenta() {
@@ -58,8 +58,9 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 		this.correo = correo;
 	}
 	
-	public int compareTo(Cliente o) {
-		return this.getApellido().compareTo(getApellido());
+	//compara el tipo String del atributo apellido
+	public int compareTo(Cliente e) {
+		return this.getApellido().compareTo(e.getApellido());
 	}
 	
 	public int validarTelefono() {

@@ -33,6 +33,6 @@ public abstract class Persona {
 	}	
 	@Override
 	public String toString() {
-		return " [Nombre=" + nombre + ", Apellido=" + apellido + ", Dni=" + dni  ;
+		return " Nombre: " + nombre + ", Apellido: " + apellido + ", Dni: " + dni  ;
 	}	
 }
