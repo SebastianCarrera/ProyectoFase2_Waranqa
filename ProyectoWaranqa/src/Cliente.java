@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+//AUTOR: Sebastian Carrera, Adrian Zevallos
 public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 	
 	private String correo;
@@ -17,29 +18,21 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 
 	public void ingresarDatos() {
 		 Scanner entrada= new Scanner(System.in);
-		 System.out.println("INGRESE SU NOMBRE POR FAVOR");
-		 setNombre(entrada.nextLine());
-		
-		 System.out.println("INGRESE SU APELLIDO POR FAVOR");
-		 setApellido(entrada.nextLine());
-		
-		 System.out.println("INGRESE SU DNI POR FAVOR");
-		 setDNI(entrada.nextLine());
-		 
-		 System.out.println("INGRESE SU TELEFONO POR FAVOR");
+		 super.ingresarDatos();
+		 System.out.println(" \t ·········· INGRESE SU TELEFONO POR FAVOR ·········· \t");
 		 setTelefono(entrada.nextLine());
 		 
-		 System.out.println("INGRESE SU CORREO ELECTRONICO POR FAVOR");
+		 System.out.println(" \t ·········· INGRESE SU CORREO ELECTRONICO POR FAVOR ·········· \t");
 		 setCorreo(entrada.nextLine());
 		 
 	}
 	
 	public String toString() {
-		return "CLIENTE: "+super.toString() + ", Telefono: "+this.getTelefono()+ ", Correo: "+this.getCorreo();
+		return "CLIENTE :  " +super.toString() + "  ,  Telefono = "+this.getTelefono()+ "  ,  Correo : "+this.getCorreo();
 	}
 
 	public void borrarCuenta() {
-		
+		System.out.println("CUENTA BORRADA CON EXITO...");
 	}
 
 	public String getTelefono() {
@@ -58,18 +51,18 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 		this.correo = correo;
 	}
 	
-	//compara el tipo String del atributo apellido
 	public int compareTo(Cliente e) {
 		return this.getApellido().compareTo(e.getApellido());
+		
 	}
 	
 	public int validarTelefono() {
 		if(this.getTelefono().length() > 9 || this.getTelefono().length() < 9) {
-			System.out.println("El numero ingresado de telefono es incorrecto");
+			System.out.println("EL NUMERO INGRESADO DE TELEFONO ES INCORRECTO");
 			return 0;
 		}
 		else {
-			System.out.println("El numero ingresado de telefono es correcto");
+			System.out.println("EL NUMERO INGRESADO DE TELEFONO ES CORRECTO");
 			return 1;
 		}
 	}
@@ -96,4 +89,21 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 			return 1;			
 		}
 	}
+
+	@Override
+	public int decidirOperacion() {
+		Scanner scan = new Scanner(System.in);
+        System.out.println (" PROCEDER CON LA OPERACION ?.. SI/NO");
+        String a = scan.nextLine();
+        if (a.equals("SI")) 
+        {
+            return 1;
+        } 
+        
+        else if (a.equals("NO"))
+        {
+            return 0;  
+        }
+        return -1;
+    }
 }

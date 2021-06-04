@@ -82,8 +82,6 @@ public class Prueba {
 			}
 		}
 		while(opcion!=7);
-		
-		
 	}
 
 }

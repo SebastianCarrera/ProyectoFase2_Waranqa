@@ -1,6 +1,4 @@
 
-import java.util.*;
-
 public class ListLinked<T> {
 	protected Node<T> first;
 	protected int count;
@@ -22,13 +20,14 @@ public class ListLinked<T> {
 		this.count=0;
 	}
 	
-	public int search(T x) {
+	public int search(T x) throws ItemNotFound  {
 		Node<T> aux = this.first;
 		
 		for(int i =0; aux!=null; aux= aux.getNext(), i++ )
 			if(aux.getData().equals(x))
 				return i;
-		return -1;
+		throw new ItemNotFound("El dato "+ x +" no se encuentra...");
+		
 	}
 	
 	public void insertLast(T x) {
@@ -77,7 +76,7 @@ public class ListLinked<T> {
 		String str="";
 		Node<T> aux = this.first;
 		for(int i =0; aux!=null; aux= aux.getNext(), i++ )
-			str +="["+(i+1)+"] "+"\t"+aux.getData()+"\n";
+			str +="["+i+"] = "+ " \t "+aux.getData()+"\n";
 		return str; 
 	}
 }

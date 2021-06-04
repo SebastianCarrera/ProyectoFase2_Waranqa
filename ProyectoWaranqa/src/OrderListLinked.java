@@ -35,7 +35,7 @@ public class OrderListLinked<T extends Comparable<T>> extends ListLinked<T> {
 			}
 		}
 	}
-	public void remove(T elemento) {
+	public void remove(T elemento)  { 
 		Node <T> aux=this.first;
 		Node <T> anterior=null;
 		
@@ -54,7 +54,7 @@ public class OrderListLinked<T extends Comparable<T>> extends ListLinked<T> {
 		 this.count--;
 	}
 	
-	public int search( T elemento) {
+	public int buscar( T elemento )throws ItemNotFound {
 		Node<T> aux=this.first;
 		
 		while(aux!= null && aux.getData().compareTo(elemento) < 0) {
@@ -65,9 +65,7 @@ public class OrderListLinked<T extends Comparable<T>> extends ListLinked<T> {
 			aux.getData().equals(elemento);
 			System.out.println("Elemento encontrado : "+elemento);
 			return 0;
-			
 		}
-		System.out.println("Elemento no encontrado...");
-		return -1;
+		throw new ItemNotFound("No se encontro lo que buscaba..");		
 	}
 }

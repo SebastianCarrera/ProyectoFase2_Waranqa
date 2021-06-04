@@ -1,4 +1,6 @@
+import java.util.Scanner;
 
+///AUTOR : Hector Ramos Chalco
 public abstract class Persona {
 	
 	private String nombre;
@@ -9,6 +11,18 @@ public abstract class Persona {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
+	}
+	public void ingresarDatos() {
+		Scanner entrada= new Scanner(System.in);
+		 System.out.println(" \t ·········· INGRESE SU NOMBRE POR FAVOR ·········· \t ");
+		 setNombre(entrada.nextLine());
+		
+		 System.out.println(" \t ·········· INGRESE SU APELLIDO POR FAVOR ·········· \t ");
+		 setApellido(entrada.nextLine());
+		
+		 System.out.println(" \t ·········· INGRESE SU DNI POR FAVOR ·········· \t");
+		 setDNI(entrada.nextLine());
+
 	}
 	public Persona() {
 		super();
@@ -33,6 +47,6 @@ public abstract class Persona {
 	}	
 	@Override
 	public String toString() {
-		return " Nombre: " + nombre + ", Apellido: " + apellido + ", Dni: " + dni  ;
+		return " Nombre : " + nombre + " , Apellido : " + apellido + "  ,  Dni : " + dni  ;
 	}	
 }
