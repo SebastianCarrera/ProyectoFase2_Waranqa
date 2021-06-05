@@ -28,7 +28,7 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 	}
 	
 	public String toString() {
-		return "CLIENTE :  " +super.toString() + "  ,  Telefono = "+this.getTelefono()+ "  ,  Correo : "+this.getCorreo();
+		return "CLIENTE : " +super.toString() + " ,  Telefono = "+this.getTelefono()+ " ,  Correo : "+this.getCorreo();
 	}
 
 	public void borrarCuenta() {
@@ -95,12 +95,11 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 		Scanner scan = new Scanner(System.in);
         System.out.println (" PROCEDER CON LA OPERACION ?.. SI/NO");
         String a = scan.nextLine();
-        if (a.equals("SI")) 
+        if (a.equals("SI") || a.equals("si")) 
         {
             return 1;
-        } 
-        
-        else if (a.equals("NO"))
+        }
+        else if (a.equals("NO") || a.equals("no"))
         {
             return 0;  
         }

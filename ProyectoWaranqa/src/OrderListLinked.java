@@ -66,6 +66,6 @@ public class OrderListLinked<T extends Comparable<T>> extends ListLinked<T> {
 			System.out.println("Elemento encontrado : "+elemento);
 			return 0;
 		}
-		throw new ItemNotFound("No se encontro lo que buscaba..");		
+		throw new ItemNotFound("No se encontro lo que buscaba...");		
 	}
 }

@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 //AUTOR : Diego Quiroz 
@@ -149,20 +148,19 @@ public class Trabajador extends Persona implements Cuenta,Comparable<Trabajador>
 
 	@Override
 	public String toString() {
-		return "TRABAJADOR :  "+ super.toString() + "  Oficio : " + this.getOficio() + "  , Tarifa : " + "S/."+this.getTarifa() + "  ,  Horas : " + this.getHoras() 
-				+ "  ,  Telefono : " + celular ;
+		return "TRABAJADOR : "+ super.toString() + "  Oficio : " + this.getOficio() + " , Tarifa : " + "S/."+this.getTarifa() + " ,  Horas : " + this.getHoras() 
+				+ " ,  Telefono : " + celular ;
 	}
 	
 	public int decidirOperacion() {
 		Scanner scan = new Scanner(System.in);
         System.out.println (" PROCEDER CON LA OPERACION ?.. SI/NO");
         String a = scan.nextLine();
-        if (a.equals("SI")) 
+        if (a.equals("SI") || a.equals("si")) 
         {
             return 1;
-        } 
-        
-        else if (a.equals("NO"))
+        }
+        else if (a.equals("NO") || a.equals("no"))
         {
             return 0;  
         }
