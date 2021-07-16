@@ -1,9 +1,7 @@
-//AUTOR: Adrian Zevallos
+
 public interface Cuenta {
+	void ingresarDatos();
 	void borrarCuenta();
-	int validarDNI();
-	int validarTelefono();
-	int decidirOperacion();
+	
 	
 }
-

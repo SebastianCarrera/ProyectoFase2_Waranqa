@@ -1,61 +1,65 @@
 
-public class ListLinked<T> {
-	protected Node<T> first;
+
+public class ListLinked<T extends Comparable<T>> {
+	protected Node first;
+	
 	protected int count;
 	
+	
 	public ListLinked() {
-		this.first=null;
-		this.count=0;
+		super();
 	}
-	public boolean isEmptyList() {
-		return (this.first==null);
+	
+	
+	public ListLinked(ListLinked<T>.Node first, int count) {
+		super();
+		this.first = first;
+		this.count = count;
 	}
+
 	public int length() {
 		return this.count;
 	}
 	
-	public void destroyList() {
-		while (this.first !=null)
-			this.first = this.first.getNext();
-		this.count=0;
-	}
 	
-	public int search(T x) throws ItemNotFound  {
-		Node<T> aux = this.first;
-		
-		for(int i =0; aux!=null; aux= aux.getNext(), i++ )
-			if(aux.getData().equals(x))
-				return i;
-		throw new ItemNotFound("El dato "+ x +" no se encuentra...");
-		
-	}
 	
-	public void insertLast(T x) {
-		if (this.isEmptyList())
-			this.insertFirst(x);
+	
+	public void insercion(T elemento){
+		Node nuevo = new Node();
+		
+		nuevo.setData(elemento);
+		if(this.first==null) {
+			this.first=nuevo;
+		}
 		else {
-			Node<T> lastNode = getLastNode();
-			lastNode.setNext(new Node<T>(x));
-			this.count++;
+			if(elemento.compareTo(this.first.getData()) > 0) {
+				nuevo.next=this.first;
+				this.first=nuevo;
+			}
+			else {
+				Node temporal= new Node();
+				Node anterior= new Node();
+				temporal=this.first;
+				anterior=this.first;
+				while(elemento.compareTo(temporal.getData()) >= 0 && temporal.getNext()!= null ) {
+					anterior=temporal;
+					temporal=temporal.getNext();
+				}
+				if(elemento.compareTo(temporal.getData()) >= 0) {
+					temporal.next=nuevo;
+				}
+				else {
+					nuevo.next=temporal;
+					anterior.next=nuevo;
+	
+				}
+			}
 		}
 	}
 	
-	//Precondicion: Lista no este vacia
-	private Node<T> getLastNode(){
-		Node<T> aux = this.first;
-		while (aux.getNext()!=null)
-			aux=aux.getNext();
-		return aux;
-	}
-	
-	public void insertFirst(T x) {
-		this.first= new Node<T> (x,this.first);
-		this.count++;
-	}
-	
 	public void remove(T elemento) {
-		Node <T> aux=this.first;
-		Node <T> anterior=null;
+		Node  aux=this.first;
+		Node  anterior=null;
 		
 		if (aux != null && aux.getData() == elemento) {
 			this.first = aux.getNext(); 
@@ -68,15 +72,67 @@ public class ListLinked<T> {
 		 if (aux == null)
 			 return;
 		 anterior.setNext(aux.getNext());
-		 System.out.println("SE BORRÓ EXITOSAMENTE....");
+		 System.out.println("BORRADO EXITOSO DEL ELEMENTO --->"+elemento);
 		 this.count--;
-	
 	}
+	
+	public int search( T elemento) {
+		Node aux=this.first;
+		
+		while(aux!= null && aux.getData().compareTo(elemento) < 0) {
+			aux= aux.getNext();
+			
+			}
+		if(aux!= null) {
+			aux.getData().equals(elemento);
+			System.out.println("Elemento encontrado : "+elemento);
+			return 0;
+			
+		}
+		System.out.println("Elemento no encontrado...");
+		return -1;
+	}
+
 	public String toString() {
 		String str="";
-		Node<T> aux = this.first;
+		Node aux = this.first;
 		for(int i =0; aux!=null; aux= aux.getNext(), i++ )
-			str +="["+(i+1)+"] = "+ " \t "+aux.getData()+"\n";
+			str +="["+i+"]="+"\t"+aux.getData()+"\n";
 		return str; 
 	}
+	
+	public class Node  {
+		 protected T data;// informacion 
+		 protected Node next; //puntero enlace
+		
+		public Node(T data) {
+			this (data,null);
+		}
+
+		public Node() {
+		}
+
+		public Node(T data, Node next) {
+			super();
+			this.data = data;
+			this.next = next;
+		}
+
+		public T getData() {
+			return data;
+		}
+
+		public void setData(T data) {
+			this.data = data;
+		}
+
+		public Node getNext() {
+			return next;
+		}
+
+		public void setNext(Node next) {
+			this.next = next;
+		}
+	}
+
 }
