@@ -2,8 +2,19 @@ import javax.swing.JOptionPane;
 
 public class Prueba {
 
-//AUTOR: Diego Quiroz 
+
 	public static void main(String[] args) {
+		HashC<Empresa> empresas = new HashC<Empresa>(5);   
+		Empresa LcMajes = new Empresa ("LC Majes", 123321, "Calle Ricardo Palma");
+		Empresa SagaFalabella = new Empresa ("Saga Falabella", 435342, "Av. Porongoche");
+		Empresa McDonalds = new Empresa ("McDonalds", 413535, "Av. Ejercito");
+		Empresa LcSoftland = new Empresa ("LC Softland", 324324, "Calle Paucarpata");
+		Empresa PlazaVea = new Empresa ("Plaza Vea", 413532, "Av. Ejercito");
+		empresas.insert(LcMajes);
+		empresas.insert(SagaFalabella);
+		empresas.insert(McDonalds);
+		empresas.insert(LcSoftland);
+		empresas.insert(PlazaVea);
 		//Creacion de una lista enlazada ordenada que almacenara a objetos de la clase Cliente y Trabajador
 		OrderListLinked<Cliente> listaClientes = new OrderListLinked<Cliente>();
 		Cliente c1=new Cliente();
@@ -27,18 +38,19 @@ public class Prueba {
 						" 3. Buscar servicio de un trabajador \n"+
 						" 4. Mostrar Lista de Clientes \n"+
 						" 5. Mostrar Lista de Trabajadores \n"+
-						" 6. Calcular pago Trabajador \n"+
-						" 7. Calcular pago Trabajador \n"+
-						" 8. Borrar Cuenta \n"+
-						" 9. SALIR")) ;
+						" 6. Mostrar Empresa \n"+
+						" 7. Buscar Empresa \n"+
+						" 8. Calcular pago Trabajador \n"+
+						" 9. Borrar Cuenta \n"+
+						" 10. SALIR")) ;
 				switch (opcion){
 				
-				//AUTOR: Diego Quiroz, Hector Ramos
+	
 		        case 1:
 		        	
 		        	JOptionPane.showMessageDialog(null, "OPCION 1");
 		 
-		        	//ingreso de datos del cliente
+		 
 		            c1.ingresarDatos();
 		            System.out.println("PROCESANDO.....");
 					
@@ -51,7 +63,7 @@ public class Prueba {
 					listaClientes.insercion(c1); 
 					JOptionPane.showMessageDialog(null, "CUENTA CREADA EXITOSAMENTE");
 		            
-					//2do cliente
+			
 					System.out.println(" \n \t ····· INGRESAR DATOS PARA CREAR UNA 2DA CUENTA ····· \t ");
 		        	c2.ingresarDatos();
 		            System.out.println("PROCESANDO.....");
@@ -82,7 +94,7 @@ public class Prueba {
 					JOptionPane.showMessageDialog(null, "CUENTA CREADA EXITOSAMENTE");
 					break;
 					
-				///AUTOR: Sebastian Carrera
+			
 		        case 3:
 		        	JOptionPane.showMessageDialog(null, "OPCION 3");
 		        		        
@@ -116,13 +128,36 @@ public class Prueba {
 		            	       
 		            break;
 		            
-		        ///AUTOR: Sebastian Carrera, Adrian Zevallos
+		 
 		            
 		        case 6:
+		        	JOptionPane.showMessageDialog(null, "OPCION 6");
 		        	
+		        	System.out.println(empresas);
 		        	break;
 		       
 		        case 7:
+		        	JOptionPane.showMessageDialog(null, "OPCION 7");
+    		        
+		        	JOptionPane.showMessageDialog(null, "BUSCANDO A LA EMPRESA: " + LcMajes.getNombre(),"BUSQUEDA DE EMPRESAS",JOptionPane.INFORMATION_MESSAGE);
+		        	JOptionPane.showMessageDialog(null," ¿ DESEA BUSCAR ESTA EMPRESA ? " );
+		        	 
+		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere seguir buscando ese servicio
+		        	int decision1 = LcMajes.decidirOperacion();
+		        	if(decision1 == 0) {
+		        		JOptionPane.showMessageDialog(null, " VOLVIENDO AL MENÚ ");
+		        		break;
+		        	}
+		        	if (decision1 == 1) {
+		        		
+		        		JOptionPane.showMessageDialog(null, "SE PROCEDERA A LA BÚSQUEDA ");
+		        		JOptionPane.showMessageDialog(null, empresas.search(LcMajes));
+			        	break;
+		        	}
+		        	
+		        	break;
+
+		        case 8:
 		        	JOptionPane.showMessageDialog(null, "OPCION 6");
 		        	
 		        	double pago = carpintero.calcularPago();
@@ -130,7 +165,7 @@ public class Prueba {
 		        	
 		        	break;
 		            
-		        case 8:
+		        case 9:
 		        	JOptionPane.showMessageDialog(null, "OPCION 7");
 		        	
 		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere borrar su Cuenta
@@ -145,7 +180,7 @@ public class Prueba {
 			        	 c1.borrarCuenta();
 			        	 break;
 		        	 }
-		        case 9:
+		        case 10:
 		        	//si elige la opcion 9 el sistema procede a cerrarse y salir
 		        	JOptionPane.showMessageDialog(null, "SALIENDO DEL SISTEMA");	
 		            JOptionPane.showMessageDialog(null, "VUELVA PRONTO");
@@ -158,7 +193,7 @@ public class Prueba {
 		            break;
 				}
 			}
-			while(opcion!=9);
+			while(opcion!=10);
 		}
 		
 		catch(Exception y) {
