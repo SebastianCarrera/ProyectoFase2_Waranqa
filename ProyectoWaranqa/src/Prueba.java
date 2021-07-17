@@ -28,8 +28,9 @@ public class Prueba {
 						" 4. Mostrar Lista de Clientes \n"+
 						" 5. Mostrar Lista de Trabajadores \n"+
 						" 6. Calcular pago Trabajador \n"+
-						" 7. Borrar Cuenta \n"+
-						" 8. SALIR")) ;
+						" 7. Calcular pago Trabajador \n"+
+						" 8. Borrar Cuenta \n"+
+						" 9. SALIR")) ;
 				switch (opcion){
 				
 				//AUTOR: Diego Quiroz, Hector Ramos
@@ -118,15 +119,18 @@ public class Prueba {
 		        ///AUTOR: Sebastian Carrera, Adrian Zevallos
 		            
 		        case 6:
+		        	
+		        	break;
+		       
+		        case 7:
 		        	JOptionPane.showMessageDialog(null, "OPCION 6");
 		        	
 		        	double pago = carpintero.calcularPago();
 		        	JOptionPane.showMessageDialog(null, "EL PAGO CORRESPONDIENTE AL TRABAJADOR "+ carpintero.getOficio() +" ES : S/. "+ pago);
 		        	
 		        	break;
-		        	
-		       
-		        case 7:
+		            
+		        case 8:
 		        	JOptionPane.showMessageDialog(null, "OPCION 7");
 		        	
 		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere borrar su Cuenta
@@ -141,9 +145,8 @@ public class Prueba {
 			        	 c1.borrarCuenta();
 			        	 break;
 		        	 }
-		            
-		        case 8:
-		        	//si elige la opcion 8 el sistema procede a cerrarse y salir
+		        case 9:
+		        	//si elige la opcion 9 el sistema procede a cerrarse y salir
 		        	JOptionPane.showMessageDialog(null, "SALIENDO DEL SISTEMA");	
 		            JOptionPane.showMessageDialog(null, "VUELVA PRONTO");
 		    		System.exit(0);
@@ -155,7 +158,7 @@ public class Prueba {
 		            break;
 				}
 			}
-			while(opcion!=8);
+			while(opcion!=9);
 		}
 		
 		catch(Exception y) {
