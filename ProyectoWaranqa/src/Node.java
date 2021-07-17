@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Node <T>{
 	protected T data;
