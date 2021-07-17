@@ -13,7 +13,8 @@ public class Prueba {
 		OrderListLinked<Trabajador> listaTrabajador = new OrderListLinked<Trabajador>();
 		Trabajador carpintero=new Trabajador();
 		Trabajador electricista=new Trabajador();
-	
+		
+		
 		int opcion=0;
 		
 		try { //try para poder usar las excepciones
