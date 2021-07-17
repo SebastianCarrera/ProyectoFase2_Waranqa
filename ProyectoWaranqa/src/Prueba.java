@@ -2,8 +2,20 @@ import javax.swing.JOptionPane;
 
 public class Prueba {
 
-//AUTOR: Diego Quiroz 
 	public static void main(String[] args) {
+
+		HashC<Empresa> empresas = new HashC<Empresa>(5);   
+		Empresa LcMajes = new Empresa ("LC Majes", 123321, "Calle Ricardo Palma");
+		Empresa SagaFalabella = new Empresa ("Saga Falabella", 435342, "Av. Porongoche");
+		Empresa McDonalds = new Empresa ("McDonalds", 413535, "Av. Ejercito");
+		Empresa LcSoftland = new Empresa ("LC Softland", 324324, "Calle Paucarpata");
+		Empresa PlazaVea = new Empresa ("Plaza Vea", 413532, "Av. Ejercito");
+		empresas.insert(LcMajes);
+		empresas.insert(SagaFalabella);
+		empresas.insert(McDonalds);
+		empresas.insert(LcSoftland);
+		empresas.insert(PlazaVea);
+
 		//Creacion de una lista enlazada ordenada que almacenara a objetos de la clase Cliente y Trabajador
 		OrderListLinked<Cliente> listaClientes = new OrderListLinked<Cliente>();
 		Cliente c1=new Cliente();
@@ -27,7 +39,7 @@ public class Prueba {
 						" 3. Buscar servicio de un trabajador \n"+
 						" 4. Mostrar Lista de Clientes \n"+
 						" 5. Mostrar Lista de Trabajadores \n"+
-						" 6. Buscar Empresa \n"+
+						" 6. Mostrar Empresas \n"+
  						" 7. Calcular pago Trabajador \n"+
 						" 8. Borrar Cuenta \n"+
 						" 9. SALIR")) ;
@@ -117,7 +129,11 @@ public class Prueba {
 		            break;
 		        
 			case 6:
-				JOptionPane.showMessageDialog(null, "OPCION 6");    
+				JOptionPane.showMessageDialog(null, "OPCION 6");
+
+				System.out.println(empresas);
+		            	       
+		            break;    
 
 		        ///AUTOR: Sebastian Carrera, Adrian Zevallos
 		            
