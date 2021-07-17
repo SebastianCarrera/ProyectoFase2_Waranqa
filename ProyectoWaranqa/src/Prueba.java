@@ -1,5 +1,5 @@
 import javax.swing.JOptionPane;
-
+import javax.swing.*;
 public class Prueba {
 
 //AUTOR: Diego Quiroz 
@@ -8,18 +8,32 @@ public class Prueba {
 		OrderListLinked<Cliente> listaClientes = new OrderListLinked<Cliente>();
 		Cliente c1=new Cliente();
 		Cliente c2=new Cliente();
+
+		
 		
 		//Lista enlazada ordenada que almacenara a objetos de la clase Trabajador
 		OrderListLinked<Trabajador> listaTrabajador = new OrderListLinked<Trabajador>();
 		Trabajador carpintero=new Trabajador();
 		Trabajador electricista=new Trabajador();
 		
+		//Creacion de tabla Hash de encadenamiento que almacenara anuncios
+		HashEncadenamiento<AnuncioLaboral> anuncios = new HashEncadenamiento<AnuncioLaboral>(5);
+		AnuncioLaboral a1= new AnuncioLaboral (23);
+		AnuncioLaboral a2= new AnuncioLaboral (15);
+		AnuncioLaboral a3= new AnuncioLaboral (75);
+		
+		Icon logo,check,lupa;
+		logo = new ImageIcon("src/imagen/logo5.png");
+		check = new ImageIcon("src/imagen/check.jpg");
+		lupa = new ImageIcon("src/imagen/lupa.png");
 		
 		int opcion=0;
 		
 		try { //try para poder usar las excepciones
 			
 			do { //Menu que visualizara el usuario
+				
+				JOptionPane.showMessageDialog(null, " BIENVENIDO"," \t WARANQA APP \t ",JOptionPane.INFORMATION_MESSAGE,logo);
 				opcion=Integer.parseInt(JOptionPane.showInputDialog(null, //uso de JOptionPane para poder mostrar informacion mediante ventanas emergentes
 						" MENU PRINCIPAL DE WARANQA \n"+
 						" \n ESCOJA LA OPCION A REALIZAR \n"+
