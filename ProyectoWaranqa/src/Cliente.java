@@ -15,7 +15,8 @@ public class Cliente extends Persona implements Cuenta,Comparable<Cliente>{
 		this.correo = correo;
 		this.telefono = telefono;
 	}
-
+	
+	
 	public void ingresarDatos() {
 		 Scanner entrada= new Scanner(System.in);
 		 super.ingresarDatos();

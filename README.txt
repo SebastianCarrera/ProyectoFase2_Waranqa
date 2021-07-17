@@ -1,1 +1,1 @@
-Diego Quiroz Huerta	
+Nombre: Diego Quiroz Huerta	
