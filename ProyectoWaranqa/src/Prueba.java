@@ -27,9 +27,10 @@ public class Prueba {
 						" 3. Buscar servicio de un trabajador \n"+
 						" 4. Mostrar Lista de Clientes \n"+
 						" 5. Mostrar Lista de Trabajadores \n"+
-						" 6. Calcular pago Trabajador \n"+
-						" 7. Borrar Cuenta \n"+
-						" 8. SALIR")) ;
+						" 6. Buscar Empresa \n"+
+ 						" 7. Calcular pago Trabajador \n"+
+						" 8. Borrar Cuenta \n"+
+						" 9. SALIR")) ;
 				switch (opcion){
 				
 				//AUTOR: Diego Quiroz, Hector Ramos
@@ -114,11 +115,14 @@ public class Prueba {
 		        	JOptionPane.showMessageDialog(null, listaTrabajador);
 		            	       
 		            break;
-		            
+		        
+			case 6:
+				JOptionPane.showMessageDialog(null, "OPCION 6");    
+
 		        ///AUTOR: Sebastian Carrera, Adrian Zevallos
 		            
-		        case 6:
-		        	JOptionPane.showMessageDialog(null, "OPCION 6");
+		        case 7:
+		        	JOptionPane.showMessageDialog(null, "OPCION 7");
 		        	
 		        	double pago = carpintero.calcularPago();
 		        	JOptionPane.showMessageDialog(null, "EL PAGO CORRESPONDIENTE AL TRABAJADOR "+ carpintero.getOficio() +" ES : S/. "+ pago);
@@ -126,8 +130,8 @@ public class Prueba {
 		        	break;
 		        	
 		       
-		        case 7:
-		        	JOptionPane.showMessageDialog(null, "OPCION 7");
+		        case 8:
+		        	JOptionPane.showMessageDialog(null, "OPCION 8");
 		        	
 		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere borrar su Cuenta
 		        	int decision2 = c1.decidirOperacion();
@@ -142,7 +146,7 @@ public class Prueba {
 			        	 break;
 		        	 }
 		            
-		        case 8:
+		        case 9:
 		        	//si elige la opcion 8 el sistema procede a cerrarse y salir
 		        	JOptionPane.showMessageDialog(null, "SALIENDO DEL SISTEMA");	
 		            JOptionPane.showMessageDialog(null, "VUELVA PRONTO");
@@ -155,7 +159,7 @@ public class Prueba {
 		            break;
 				}
 			}
-			while(opcion!=8);
+			while(opcion!=9);
 		}
 		
 		catch(Exception y) {
