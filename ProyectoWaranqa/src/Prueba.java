@@ -4,17 +4,7 @@ public class Prueba {
 
 //AUTOR: Diego Quiroz 
 	public static void main(String[] args) {
-		//Creacion de una lista enlazada ordenada que almacenara a objetos de la clase Cliente y Trabajador
-		OrderListLinked<Cliente> listaClientes = new OrderListLinked<Cliente>();
-		Cliente c1=new Cliente();
-		Cliente c2=new Cliente();
 
-		
-		
-		//Lista enlazada ordenada que almacenara a objetos de la clase Trabajador
-		OrderListLinked<Trabajador> listaTrabajador = new OrderListLinked<Trabajador>();
-		Trabajador carpintero=new Trabajador();
-		Trabajador electricista=new Trabajador();
 		
 		//Creacion de tabla Hash de encadenamiento que almacenara anuncios
 		HashEncadenamiento<AnuncioLaboral> anuncios = new HashEncadenamiento<AnuncioLaboral>(5);
@@ -22,11 +12,22 @@ public class Prueba {
 		AnuncioLaboral a2= new AnuncioLaboral (15);
 		AnuncioLaboral a3= new AnuncioLaboral (75);
 		
+	
+		//Creacion de una lista enlazada ordenada que almacenara a objetos de la clase Cliente y Trabajador
+		OrderListLinked<Cliente> listaClientes = new OrderListLinked<Cliente>();
+		Cliente c1=new Cliente();
+		Cliente c2=new Cliente();
+		
+		//Lista enlazada ordenada que almacenara a objetos de la clase Trabajador
+		OrderListLinked<Trabajador> listaTrabajador = new OrderListLinked<Trabajador>();
+		Trabajador carpintero=new Trabajador();
+		Trabajador electricista=new Trabajador();
+		
 		Icon logo,check,lupa;
 		logo = new ImageIcon("src/imagen/logo5.png");
 		check = new ImageIcon("src/imagen/check.jpg");
 		lupa = new ImageIcon("src/imagen/lupa.png");
-		
+
 		int opcion=0;
 		
 		try { //try para poder usar las excepciones
@@ -34,19 +35,22 @@ public class Prueba {
 			do { //Menu que visualizara el usuario
 				
 				JOptionPane.showMessageDialog(null, " BIENVENIDO"," \t WARANQA APP \t ",JOptionPane.INFORMATION_MESSAGE,logo);
-				opcion=Integer.parseInt(JOptionPane.showInputDialog(null, //uso de JOptionPane para poder mostrar informacion mediante ventanas emergentes
-						" MENU PRINCIPAL DE WARANQA \n"+
+				
+				opcion=Integer.parseInt(JOptionPane.showInputDialog(null, 							//uso de JOptionPane para poder mostrar informacion mediante ventanas emergentes
+						" MENU PRINCIPAL DE WARANQA "+"\n"+
 						" \n ESCOJA LA OPCION A REALIZAR \n"+
 						" \n 1. Crear cuenta Cliente \n"+
 						" 2. Crear cuenta Trabajador \n"+
 						" 3. Buscar servicio de un trabajador \n"+
 						" 4. Mostrar Lista de Clientes \n"+
 						" 5. Mostrar Lista de Trabajadores \n"+
-						" 6. Calcular pago Trabajador \n"+
-						" 7. Borrar Cuenta \n"+
-						" 8. SALIR")) ;
+						" 6. Ingresar Anuncio \n"+
+						" 7. Mostrar Anuncios \n"+
+						" 8. Calcular pago Trabajador \n"+
+						" 9. Borrar Cuenta \n"+
+						" 10. SALIR")) ;
 				switch (opcion){
-				
+			
 				//AUTOR: Diego Quiroz, Hector Ramos
 		        case 1:
 		        	
@@ -54,7 +58,7 @@ public class Prueba {
 		 
 		        	//ingreso de datos del cliente
 		            c1.ingresarDatos();
-		            System.out.println("PROCESANDO.....");
+		            JOptionPane.showMessageDialog(null, "Procesando...");
 					
 					if(c1.validarDNI()==0 || c1.validarTelefono()==0) {
 						JOptionPane.showMessageDialog(null, "ERROR");
@@ -104,17 +108,17 @@ public class Prueba {
 		        	System.out.println(" ¿ DESEA BUSCAR ESTE SERVICIO ? " );
 		        	 
 		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere seguir buscando ese servicio
-		        	int decision = c1.decidirOperacion();
-		        	if(decision == 0) {
+		        	int decision1 = c1.decidirOperacion();
+		        	if(decision1 == 0) {
 		        		JOptionPane.showMessageDialog(null, " VOLVIENDO AL MENÚ ");
 		        		break;
 		        	}
-		        	if (decision == 1) {
+		        	if (decision1 == 1) {
 		        		JOptionPane.showMessageDialog(null, "SE PROCEDERA A LA BÚSQUEDA ");
 		        		System.out.println(listaTrabajador.buscar(carpintero));
 			        	break;
 		        	}
-		        	            
+		                  
 		            
 		        case 4:
 		        	JOptionPane.showMessageDialog(null, "OPCION 4");
@@ -129,53 +133,76 @@ public class Prueba {
 		        	JOptionPane.showMessageDialog(null, listaTrabajador);
 		            	       
 		            break;
-		            
-		        ///AUTOR: Sebastian Carrera, Adrian Zevallos
-		            
+		           
 		        case 6:
-		        	JOptionPane.showMessageDialog(null, "OPCION 6");
-		        	
+		        	JOptionPane.showMessageDialog(null, "OPCION 8");
+			   		 
+		        	//ingreso de datos del anuncio
+		        	a1.ingresarAnuncio();
+		        	anuncios.insert(a1);
+		        	JOptionPane.showMessageDialog(null, "ANUNCIO CREADO EXITOSAMENTE ","Estado Anuncio", JOptionPane.INFORMATION_MESSAGE,check);
+		        	a2.ingresarAnuncio();
+		        	anuncios.insert(a2);
+		        	JOptionPane.showMessageDialog(null, "ANUNCIO CREADO EXITOSAMENTE ","Estado Anuncio", JOptionPane.INFORMATION_MESSAGE,check);
+		        	a3.ingresarAnuncio();
+		        	anuncios.insert(a3);
+		        	JOptionPane.showMessageDialog(null, "ANUNCIO CREADO EXITOSAMENTE ","Estado Anuncio", JOptionPane.INFORMATION_MESSAGE,check);
+		            break;
+		            	       
+		       
+		            
+		        case 7:
+		        	JOptionPane.showMessageDialog(null, "OPCION 9");
+			   		System.out.println(anuncios);
+		            break;
+		        
+		        
+		        case 8:
+		        	JOptionPane.showMessageDialog(null, "OPCION 10");
 		        	double pago = carpintero.calcularPago();
 		        	JOptionPane.showMessageDialog(null, "EL PAGO CORRESPONDIENTE AL TRABAJADOR "+ carpintero.getOficio() +" ES : S/. "+ pago);
 		        	
 		        	break;
-		        	
-		       
-		        case 7:
-		        	JOptionPane.showMessageDialog(null, "OPCION 7");
+		     
+		            
+		        case 9:
+		        	JOptionPane.showMessageDialog(null, "OPCION 11");
 		        	
 		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere borrar su Cuenta
-		        	int decision2 = c1.decidirOperacion();
-		        	 if(decision2 == 0) {			
+		        	int decision3 = c1.decidirOperacion();
+		        	 if(decision3 == 0) {			
 		        		 JOptionPane.showMessageDialog(null, "NO SE ELIMINARA LA CUENTA...");
 							break;
 							}
-		        	 if(decision2 == 1) {
+		        	 if(decision3 == 1) {
 		        		 JOptionPane.showMessageDialog(null, "SE PROCEDERA A ELIMINAR LA CUENTA...");
 		        		 listaClientes.remove(c1);
 			        	 c1.borrarCuenta();
 			        	 break;
 		        	 }
 		            
-		        case 8:
-		        	//si elige la opcion 8 el sistema procede a cerrarse y salir
+		       
+		            
+		        case 10:
+		        	//si elige la opcion 9 el sistema procede a cerrarse y salir
 		        	JOptionPane.showMessageDialog(null, "SALIENDO DEL SISTEMA");	
 		            JOptionPane.showMessageDialog(null, "VUELVA PRONTO");
 		    		System.exit(0);
 		            break;
-		            
+		       
+		     
 		        default:
 		        	JOptionPane.showMessageDialog(null, "OPCION INVALIDA");
 		
 		            break;
 				}
 			}
-			while(opcion!=8);
+			while(opcion!=10);
 		}
 		
 		catch(Exception y) {
 			System.out.println(y.getMessage());
 		}
 		
-	}		
+	}
 }
