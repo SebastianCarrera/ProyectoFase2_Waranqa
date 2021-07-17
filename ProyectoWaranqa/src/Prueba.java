@@ -13,17 +13,14 @@ public class Prueba {
 		OrderListLinked<Trabajador> listaTrabajador = new OrderListLinked<Trabajador>();
 		Trabajador carpintero=new Trabajador();
 		Trabajador electricista=new Trabajador();
-		
-		
+	
 		int opcion=0;
-		
-		
 		
 		try { //try para poder usar las excepciones
 			
 			do { //Menu que visualizara el usuario
 				opcion=Integer.parseInt(JOptionPane.showInputDialog(null, //uso de JOptionPane para poder mostrar informacion mediante ventanas emergentes
-						" MENU PRINICIPAL DE WARANQA \n"+
+						" MENU PRINCIPAL DE WARANQA \n"+
 						" \n ESCOJA LA OPCION A REALIZAR \n"+
 						" \n 1. Crear cuenta Cliente \n"+
 						" 2. Crear cuenta Trabajador \n"+
@@ -35,7 +32,7 @@ public class Prueba {
 						" 8. SALIR")) ;
 				switch (opcion){
 				
-				//AUTOR: Diego Quiroz, Hector Ramos 
+				//AUTOR: Diego Quiroz, Hector Ramos
 		        case 1:
 		        	
 		        	JOptionPane.showMessageDialog(null, "OPCION 1");
@@ -84,25 +81,25 @@ public class Prueba {
 					JOptionPane.showMessageDialog(null, "CUENTA CREADA EXITOSAMENTE");
 					break;
 					
-					
+				///AUTOR: Sebastian Carrera
 		        case 3:
 		        	JOptionPane.showMessageDialog(null, "OPCION 3");
 		        		        
 		        	JOptionPane.showMessageDialog(null, "BUSCANDO EL SERVICIO DE: " + carpintero.getOficio());
-		        	 System.out.println(" ¿ DESEA BUSCAR ESTE SERVICIO ? SI/NO" );
+		        	System.out.println(" ¿ DESEA BUSCAR ESTE SERVICIO ? " );
 		        	 
 		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere seguir buscando ese servicio
-		        	 if(c1.decidirOperacion()==0) {			
-		        		 JOptionPane.showMessageDialog(null, " VOLVIENDO AL MENÚ "); 
-		        		 break;
-		        		 }
-		        	 if (c1.decidirOperacion()==1) {
-		        		 JOptionPane.showMessageDialog(null, "SE PROCEDERA A LA BÚSQUEDA ");
-		        	 }
-		        	 
-		        	 System.out.println(listaTrabajador.buscar(carpintero));
-		        	 break;
-		            
+		        	int decision = c1.decidirOperacion();
+		        	if(decision == 0) {
+		        		JOptionPane.showMessageDialog(null, " VOLVIENDO AL MENÚ ");
+		        		break;
+		        	}
+		        	if (decision == 1) {
+		        		JOptionPane.showMessageDialog(null, "SE PROCEDERA A LA BÚSQUEDA ");
+		        		System.out.println(listaTrabajador.buscar(carpintero));
+			        	break;
+		        	}
+		        	            
 		            
 		        case 4:
 		        	JOptionPane.showMessageDialog(null, "OPCION 4");
@@ -119,10 +116,11 @@ public class Prueba {
 		            break;
 		            
 		        ///AUTOR: Sebastian Carrera, Adrian Zevallos
+		            
 		        case 6:
 		        	JOptionPane.showMessageDialog(null, "OPCION 6");
 		        	
-		        	double pago=carpintero.calcularPago();
+		        	double pago = carpintero.calcularPago();
 		        	JOptionPane.showMessageDialog(null, "EL PAGO CORRESPONDIENTE AL TRABAJADOR "+ carpintero.getOficio() +" ES : S/. "+ pago);
 		        	
 		        	break;
@@ -132,16 +130,17 @@ public class Prueba {
 		        	JOptionPane.showMessageDialog(null, "OPCION 7");
 		        	
 		        	//uso del metodo decidirOperacion para confirmar o denegar si quiere borrar su Cuenta
-		        	 if(c1.decidirOperacion()==0) {			
+		        	int decision2 = c1.decidirOperacion();
+		        	 if(decision2 == 0) {			
 		        		 JOptionPane.showMessageDialog(null, "NO SE ELIMINARA LA CUENTA...");
 							break;
 							}
-		        	 if(c1.decidirOperacion()==1) {
+		        	 if(decision2 == 1) {
 		        		 JOptionPane.showMessageDialog(null, "SE PROCEDERA A ELIMINAR LA CUENTA...");
+		        		 listaClientes.remove(c1);
+			        	 c1.borrarCuenta();
+			        	 break;
 		        	 }
-		        	 listaClientes.remove(c1);
-		        	 c1.borrarCuenta();
-		        	 break;
 		            
 		        case 8:
 		        	//si elige la opcion 8 el sistema procede a cerrarse y salir
@@ -156,10 +155,7 @@ public class Prueba {
 		            break;
 				}
 			}
-			
 			while(opcion!=8);
-			
-	
 		}
 		
 		catch(Exception y) {

@@ -6,3 +6,4 @@ public interface Cuenta {
 	int decidirOperacion();
 	
 }
+

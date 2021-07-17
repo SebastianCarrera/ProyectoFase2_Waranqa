@@ -26,8 +26,6 @@ public class Trabajador extends Persona implements Cuenta,Comparable<Trabajador>
 		
 		System.out.println(" \t ·········· INGRESE SUS HORAS A TRABAJAR POR FAVOR ·········· \t");
 		horas=ingreso.nextFloat();
-
-	
 	}
 	
 	public Trabajador(String nombre, String apellido, String dni, String oficio, double tarifa, float horas,
@@ -54,31 +52,21 @@ public class Trabajador extends Persona implements Cuenta,Comparable<Trabajador>
 		return oficio;
 	}
 
-
-
 	public void setOficio(String oficio) {
 		this.oficio = oficio;
 	}
-
-
 
 	public double getTarifa() {
 		return tarifa;
 	}
 
-
-
 	public void setTarifa(double tarifa) {
 		this.tarifa = tarifa;
 	}
 
-
-
 	public float getHoras() {
 		return horas;
 	}
-
-
 
 	public void setHoras(float horas) {
 		this.horas = horas;
@@ -95,7 +83,6 @@ public class Trabajador extends Persona implements Cuenta,Comparable<Trabajador>
 	public double getPago() {
 		return pago;
 	}
-
 
 	public void setPago(double pago) {
 		this.pago = pago;
@@ -117,13 +104,11 @@ public class Trabajador extends Persona implements Cuenta,Comparable<Trabajador>
 		
 	}
 
-
 	@Override
 	public void borrarCuenta() {
 		System.out.println("CUENTA BORRADA CON EXITO...");
 		
 	}
-
 
 	@Override
 	public int validarDNI() {
@@ -149,7 +134,6 @@ public class Trabajador extends Persona implements Cuenta,Comparable<Trabajador>
 		}
 	}
 
-
 	@Override
 	public int validarTelefono() {
 		if(this.getCelular().length() > 9 || this.getCelular().length() < 9) {
@@ -161,26 +145,22 @@ public class Trabajador extends Persona implements Cuenta,Comparable<Trabajador>
 			return 1;
 		}
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "TRABAJADOR :  "+ super.toString() + "  Oficio : " + this.getOficio() + "  , Tarifa : " + "S/."+this.getTarifa() + "  ,  Horas : " + this.getHoras() 
-				+ "  ,  Telefono : " + celular ;
+		return "TRABAJADOR : "+ super.toString() + "  Oficio : " + this.getOficio() + " , Tarifa : " + "S/."+this.getTarifa() + " ,  Horas : " + this.getHoras() 
+				+ " ,  Telefono : " + celular ;
 	}
-
-
-	@Override
+	
 	public int decidirOperacion() {
 		Scanner scan = new Scanner(System.in);
         System.out.println (" PROCEDER CON LA OPERACION ?.. SI/NO");
         String a = scan.nextLine();
-        if (a.equals("SI")) 
+        if (a.equals("SI") || a.equals("si")) 
         {
             return 1;
-        } 
-        
-        else if (a.equals("NO"))
+        }
+        else if (a.equals("NO") || a.equals("no"))
         {
             return 0;  
         }

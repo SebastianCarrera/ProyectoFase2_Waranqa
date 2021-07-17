@@ -76,7 +76,7 @@ public class ListLinked<T> {
 		String str="";
 		Node<T> aux = this.first;
 		for(int i =0; aux!=null; aux= aux.getNext(), i++ )
-			str +="["+i+"] = "+ " \t "+aux.getData()+"\n";
+			str +="["+(i+1)+"] = "+ " \t "+aux.getData()+"\n";
 		return str; 
 	}
 }
